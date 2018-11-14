@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Patatap Clone</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<script type="text/javascript" src="paper-full.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js"></script>
+		
+</head>
+<body>
+	<p class="instructions">Press any letter key on your keyboard</p>
+	<canvas id="myCanvas" resize>
+
+
+	</canvas>
 	<script type="text/paperscript" canvas="myCanvas">
 		var keyData = {
 			q: {
@@ -172,6 +181,10 @@
 		function onKeyDown(event) {
 			// sound.play();
 			if (keyData[event.key]) {
+				var instructions = document.querySelectorAll('p');
+				for(var i = 0; i < instructions.length; i++){
+    				instructions[i].classList.add("hidden");
+				}
 				var maxPoint = new Point(view.size.width, view.size.height);
 				var randomPoint = Point.random();
 				var point = maxPoint * randomPoint;
@@ -194,9 +207,6 @@
     			}
 			}
 		}
-	</script>	
-</head>
-<body>
-	<canvas id="myCanvas" resize></canvas>
+	</script>
 </body>
 </html>
